@@ -1,8 +1,9 @@
 import re
 from typing import List, Any
 
-from PySide2.QtWidgets import *
-from PySide2.QtCore import *
+from PySide2.QtWidgets import QTableWidget, QTableWidgetItem, QPushButton, QCheckBox, QPlainTextEdit, QGroupBox, \
+    QMainWindow, QApplication
+from PySide2.QtCore import QCoreApplication, Qt
 from ui_PointParser import Ui_MainWindow
 from PySide2.QtGui import QClipboard
 
@@ -20,6 +21,7 @@ class MainWindow(QMainWindow):
         self.ui.chkbox_auto_clear.clicked.connect(self.auto_clear)
         self.ui.btn_save_output.clicked.connect(self.save_to_table)
         self.ui.tbl_save.cellDoubleClicked.connect(self.copy_select_row)
+        self.ui.chkbox_top_window.clicked.connect(self.top_window)
 
     def point_parser(self) -> list:
         self.point_list.clear()
@@ -97,6 +99,13 @@ class MainWindow(QMainWindow):
         # Save to clipboard
         clip_board = QClipboard()
         clip_board.setText(point[0] + ',' + point[1] + ',' + point[2])
+
+    def top_window(self):
+        if self.ui.chkbox_top_window.isChecked():
+            self.setWindowFlags(Qt.WindowStaysOnTopHint | self.windowFlags())
+        else:
+            self.setWindowFlags(~Qt.WindowStaysOnTopHint & self.windowFlags())
+        self.show()
 
 
 # Boot the program

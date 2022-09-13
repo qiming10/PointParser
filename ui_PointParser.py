@@ -17,11 +17,16 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(300, 456)
+        MainWindow.resize(300, 476)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout_4 = QVBoxLayout(self.centralwidget)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
+        self.chkbox_top_window = QCheckBox(self.centralwidget)
+        self.chkbox_top_window.setObjectName(u"chkbox_top_window")
+
+        self.verticalLayout_4.addWidget(self.chkbox_top_window)
+
         self.gbox_input = QGroupBox(self.centralwidget)
         self.gbox_input.setObjectName(u"gbox_input")
         self.verticalLayout_2 = QVBoxLayout(self.gbox_input)
@@ -92,6 +97,11 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.btn_clear_tbl = QPushButton(self.gbox_save)
+        self.btn_clear_tbl.setObjectName(u"btn_clear_tbl")
+
+        self.horizontalLayout.addWidget(self.btn_clear_tbl)
+
         self.btn_save2txt = QPushButton(self.gbox_save)
         self.btn_save2txt.setObjectName(u"btn_save2txt")
 
@@ -108,9 +118,9 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_4.addWidget(self.gbox_save)
 
-        self.verticalLayout_4.setStretch(0, 2)
         self.verticalLayout_4.setStretch(1, 2)
-        self.verticalLayout_4.setStretch(3, 6)
+        self.verticalLayout_4.setStretch(2, 2)
+        self.verticalLayout_4.setStretch(4, 6)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
@@ -127,12 +137,14 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Point Parser", None))
+        self.chkbox_top_window.setText(QCoreApplication.translate("MainWindow", u"\u7f6e\u9876\u7a97\u53e3", None))
         self.gbox_input.setTitle(QCoreApplication.translate("MainWindow", u"\u7c98\u8d34\u6846", None))
         self.chkbox_auto_copy.setText(QCoreApplication.translate("MainWindow", u"\u81ea\u52a8\u590d\u5236", None))
         self.chkbox_auto_clear.setText(QCoreApplication.translate("MainWindow", u"\u81ea\u52a8\u6e05\u9664", None))
         self.gbox_output.setTitle(QCoreApplication.translate("MainWindow", u"\u89e3\u6790\u7ed3\u679c", None))
         self.btn_save_output.setText(QCoreApplication.translate("MainWindow", u"\u4fdd\u5b58\u5230\u8868\u683c\u4e2d", None))
         self.gbox_save.setTitle(QCoreApplication.translate("MainWindow", u"\u5df2\u4fdd\u5b58\u6570\u636e", None))
+        self.btn_clear_tbl.setText(QCoreApplication.translate("MainWindow", u"\u6e05\u7a7a\u8868\u683c", None))
         self.btn_save2txt.setText(QCoreApplication.translate("MainWindow", u"\u4fdd\u5b58\u6210txt", None))
         self.btn_save2xls.setText(QCoreApplication.translate("MainWindow", u"\u4fdd\u5b58\u6210excel", None))
     # retranslateUi
