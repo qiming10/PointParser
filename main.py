@@ -29,9 +29,9 @@ class MainWindow(QMainWindow):
         if not input_text:
             return
         try:
-            x_pattern = re.compile(r'[x][ ]*=[ ]*(-?\d+)(\.\d+)?')
-            y_pattern = re.compile(r'[y][ ]*=[ ]*(\d+)(\.\d+)?')
-            z_pattern = re.compile(r'[z][ ]*=[ ]*(\d+)(\.\d+)?')
+            x_pattern = re.compile(r'[x][ ]*=[ ]*([-+]?(\d+(\.\d*)?|\.\d+)([eE][-+]?\d+)?)')
+            y_pattern = re.compile(r'[y][ ]*=[ ]*([-+]?(\d+(\.\d*)?|\.\d+)([eE][-+]?\d+)?)')
+            z_pattern = re.compile(r'[z][ ]*=[ ]*([-+]?(\d+(\.\d*)?|\.\d+)([eE][-+]?\d+)?)')
             x_all: List[Any] = x_pattern.findall(input_text)
             y_all: List[Any] = y_pattern.findall(input_text)
             z_all: List[Any] = z_pattern.findall(input_text)
@@ -45,7 +45,7 @@ class MainWindow(QMainWindow):
             self.ui.ptext_output.setPlainText('')
             last_point = ''
             for i in range(len(x_all)):
-                point = [x_all[i][0]+x_all[i][1], y_all[i][0] + y_all[i][1], z_all[i][0] + z_all[i][1]]
+                point = [x_all[i][0], y_all[i][0], z_all[i][0]]
                 self.point_list.append(point)
                 self.ui.ptext_output.appendPlainText(point[0] + ',' + point[1] + ',' + point[2])
                 if i == len(x_all) - 1:
